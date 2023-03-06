@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Table from "react-bootstrap/Table";
 import { City } from "../types/City";
+import TableLayout from "./layouts/Table";
 import Map from "./Map";
 
 interface CityListProps {
@@ -9,10 +12,11 @@ interface CityListProps {
 const CityList: React.FC<CityListProps> = ({ cities }) => {
   const [filteredCities, setFilteredCities] = useState<City[]>([]);
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
+  const [showList, setShowList] = useState<Boolean | true>(true);
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value.toLowerCase();
-    const filtered = cities.filter((city) =>
+    let filtered = cities.filter((city) =>
       city.name.toLowerCase().includes(searchTerm)
     );
     setFilteredCities(filtered);
@@ -20,41 +24,78 @@ const CityList: React.FC<CityListProps> = ({ cities }) => {
 
   const handleCityClick = (city: City) => {
     setSelectedCity(city);
+    setShowList(false)
   };
 
   return (
     <div className="city-list-container">
       <div className="search-container">
-        <input
+        <Form.Label htmlFor="inputPassword5">Filter Cities</Form.Label>
+        <Form.Control
           type="text"
-          placeholder="Filter cities"
+          id="inputPassword5"
+          aria-describedby="passwordHelpBlock"
           onChange={handleFilterChange}
         />
       </div>
       <div className="city-list">
-        {filteredCities.length > 0
-          ? filteredCities.map((city) => (
-              <div
+        {filteredCities.length > 0 ? (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>City Name</th>
+                <th>Country Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+              </tr>
+            </thead>
+            {filteredCities.map((city) => (
+              <tbody
                 key={city.id}
-                className={`city-list-item ${
+                className={`city-list-item cityListName ${
                   selectedCity?.id === city.id ? "active" : ""
                 }`}
                 onClick={() => handleCityClick(city)}
               >
-                {city.name}
-              </div>
-            ))
-          : cities.map((city) => (
-              <div
-                key={city.id}
-                className={`city-list-item ${
-                  selectedCity?.id === city.id ? "active" : ""
-                }`}
-                onClick={() => handleCityClick(city)}
-              >
-                {city.name}
-              </div>
+                <TableLayout
+                  name={city.name}
+                  country={city.country}
+                  lat={city.lat}
+                  lng={city.lng}
+                />
+              </tbody>
             ))}
+          </Table>
+        ) : showList === true ? (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>City Name</th>
+                <th>Country Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+              </tr>
+            </thead>
+            {cities.map((city) => (
+              <tbody
+                key={city.id}
+                className={`city-list-item cityListName ${
+                  selectedCity?.id === city.id ? "active" : ""
+                }`}
+                onClick={() => handleCityClick(city)}
+              >
+                <TableLayout
+                  name={city.name}
+                  country={city.country}
+                  lat={city.lat}
+                  lng={city.lng}
+                />
+              </tbody>
+            ))}
+          </Table>
+        ) : (
+          <div></div>
+        )}
       </div>
       {selectedCity && (
         <div className="map-container">

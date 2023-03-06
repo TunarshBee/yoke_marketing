@@ -36,3 +36,101 @@
     transform: rotate(360deg);
   }
 }
+/* App container */
+.app-container {
+  /* display: flex; */
+  height: 100vh;
+  width: 100%;
+}
+
+/* Sidebar container */
+.sidebar-container {
+  background-color: #f5f5f5;
+  height: 100%;
+  padding: 20px;
+  width: 100%;
+}
+
+/* City list */
+.city-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* City item */
+.city-item {
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.city-item:hover {
+  background-color: #eee;
+}
+
+.city-item.active {
+  background-color: #ddd;
+}
+
+/* Search input */
+.search-input {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+/* Map container */
+.map-container {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+/* Map */
+.mapboxgl-map {
+  height: 100%;
+  width: 100%;
+}
+
+/* Info icon */
+.info-icon {
+  color: #f44336;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Popup */
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+}
+
+/* Popup temperature */
+.popup-temperature {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Popup description */
+.popup-description {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* city list name */
+.cityListName{
+  cursor: pointer;
+}
