@@ -29,6 +29,9 @@ const CityList: React.FC<CityListProps> = ({ cities }) => {
 
   return (
     <div className="city-list-container">
+        {selectedCity &&
+        <h3> {selectedCity.name} {selectedCity.country}</h3> 
+        }
       <div className="search-container">
         <Form.Label htmlFor="inputPassword5">Filter Cities</Form.Label>
         <Form.Control

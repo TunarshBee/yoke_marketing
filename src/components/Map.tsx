@@ -34,19 +34,19 @@ const Map: React.FC<MapProps> = ({ lat, lng }) => {
         new mapboxgl.Popup()
           .setLngLat([lng, lat])
           .setHTML(
-            `<div className="popup-content">
-              <div className="popup-header">
+            `<div class="popup-content">
+              <div class="popup-header">
                 <h3>${weather.city.name}</h3>
                 <img src="https://openweathermap.org/img/w/${
                   weather.list[0].weather[0].icon
                 }.png" alt="${weather.list[0].weather[0].description}">
               </div>
-              <div className="popup-body">
-                <div className="today-forecast">
+              <div class="popup-body">
+                <div class="today-forecast">
                   <h4>Today</h4>
                   <p>${Math.round(weather.list[0].main.temp)}°C</p>
                 </div>
-                <div className="tomorrow-forecast">
+                <div class="tomorrow-forecast">
                   <h4>
                   Tomorrow</h4>
                   <p>${Math.round(weather.list[1].main.temp)}°C</p>

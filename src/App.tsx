@@ -11,10 +11,7 @@ const App: React.FC = () => {
   return (
     <div className="app-container">
       <div className="sidebar-container">
-        <h1>
-
-        This is from App.jsx
-        </h1>
+        <h1 className="text-center">Weather App with map</h1>
         <CityList cities={cities} />
       </div>
     </div>

@@ -87,7 +87,7 @@
 
 /* Map container */
 .map-container {
-  height: 100%;
+  height: 50vh;
   position: relative;
   width: 100%;
 }
@@ -111,12 +111,25 @@
 
 /* Popup */
 .mapboxgl-popup {
-  max-width: 200px;
+  /* max-width: 200px; */
 }
 
 .mapboxgl-popup-content {
   text-align: center;
+  display: inline-flex;
 }
+
+.popup-content{
+  display: inline-flex;
+  width: 70%;
+  justify-content: space-around;
+}
+
+.popup-header, .popup-body{
+  display: inline-block;
+  margin: 5%;
+}
+
 
 /* Popup temperature */
 .popup-temperature {
@@ -129,8 +142,16 @@
   font-size: 16px;
   margin-top: 10px;
 }
+.mapboxgl-popup-close-button{
+  height: 30px;
+  width: 30px;
+}
 
 /* city list name */
 .cityListName{
   cursor: pointer;
+}
+#map > div.mapboxgl-control-container{
+  display: none;
+  visibility: hidden;
 }
